@@ -32,7 +32,7 @@ $result2=mysql_query($sql2);
 
 	    <script src="jquery126.js" type="text/javascript"></script>
 	    <script src="validate.js" type="text/javascript"></script>
-
+	    <script src="js/funcions.js" type="text/javascript"></script>
 <style type="text/css">
 label{display: block;}
 label.error{color:red;}
