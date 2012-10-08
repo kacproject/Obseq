@@ -37,6 +37,7 @@ $result2=mysql_query($sql2);
 label{display: block;}
 label.error{color:red;}
 </style>
+
 </head>
 
 
@@ -77,15 +78,71 @@ label.error{color:red;}
 					<input class="password_adv textu" name="password" type="password" id="password" />
 					
 					<label for="repassword">Repetir password</label>
-					<input class="password_adv textu" name="repassword" type="password" id="repassword" />
+					<input class="password_adv textu" name="password_again" type="password" id="password_again" />
 					
 					<label for="mail">E-Mail</label>
 					<input class="textu" name="mail" type="text" id="mail" />
 					
 					<label for="localidad">Localidad</label>
-					<input class="textu" name="localidad" type="text" id="localidad" />
+					<select name="localidad" id="localidad">
+<option value="15">A coruña</option>
+<option value="1">Álava</option>
+<option value="2">Albacete</option>
+<option value="3">Alicante</option>
+<option value="4">Almería</option>
+<option value="33">Asturias</option>
+<option value="5">Ávila</option>
+<option value="6">Badajoz</option>
+<option value="7">Baleares</option>
+<option value="8">Barcelona</option>
+<option value="9">Burgos</option>
+<option value="10">Cáceres</option>
+<option value="11">Cádiz</option>
+<option value="39">Cantabria</option>
+<option value="12">Castellón</option>
+<option value="51">Ceuta</option>
+<option value="13">Ciudad Real</option>
+<option value="14">Córdoba</option>
+<option value="16">Cuenca</option>
+<option value="99">Extranjero</option>
+<option value="17">Girona</option>
+<option value="18">Granada</option>
+<option value="19">Guadalajara</option>
+<option value="20">Guipúzcoa</option>
+<option value="21">Huelva</option>
+<option value="22">Huesca</option>
+<option value="23">Jaén</option>
+<option value="26">La rioja</option>
+<option value="35">Las palmas</option>
+<option value="24">León</option>
+<option value="25">Lleida</option>
+<option value="27">Lugo</option>
+<option value="28">Madrid</option>
+<option value="29">Málaga</option>
+<option value="52">Melilla</option>
+<option value="30">Murcia</option>
+<option value="31">Navarra</option>
+<option value="32">Ourense</option>
+<option value="34">Palencia</option>
+<option value="36">Pontevedra</option>
+<option value="37">Salamanca</option>
+<option value="38">Santa cruz de tenerife</option>
+<option value="40">Segovia</option>
+<option value="41">Sevilla</option>
+<option value="42">Soria</option>
+<option value="43">Tarragona</option>
+<option value="44">Teruel</option>
+<option value="45">Toledo</option>
+<option value="46">Valencia</option>
+<option value="47">Valladolid</option>
+<option value="48">Vizcaya</option>
+<option value="49">Zamora</option>
+<option value="50">Zaragoza</option>
+	                </select>
 
-					<input class="textu" name="fnacimiento" type="hidden" id="fnacimiento" />
+					<input class="textu" name="fnacimiento" type="hidden" id="fnacimiento" value="" />
+					<input class="textu" name="sexos" type="hidden" id="sexos" />
+
 					<label for="sexo">Sexo</label>
 					<select name="sexo" id="sexo">
         	            <option selected="selected" value="Día">Sexo</option>
@@ -110,14 +167,7 @@ label.error{color:red;}
  <script>
   $(document).ready(function () {
   
-    $("#myform").validate({
-rules: {
-password: "required",
-password_again: {
-equalTo: "#password"
-}
-}
-});
+
   
 	$("input.textu").val('');
 	
@@ -127,13 +177,67 @@ equalTo: "#password"
 
 
 });
+$("#registre").validate({
+            rules:{
+                nombre: {
+                    required: true,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 2
+                },
+                password_again: {
+                    required: true,
+                    minlength: 2,
+                    equalTo: "#password"
+                },
+                sexo: {
+                    required: true
+                },
+                localidad: {
+                    required: true                },
+                mail: {
+                    required: true,
+                    minlength: 6,
+                    email: true
+                }
+            },
+            messages: {
+                nombre: {
+                    required: "Introduce un nombre",
+                    minlength: "Mínimo 2 caracteres"
+                },
+                password: {
+                    required: "Introduce un password"
+                },
+                sexo: {
+                    required: "Selecciona el tipo de sexo al que perteneces"
+                },
+                localidad: {
+                    required: "Selecciona tu localidad"
+                },
+                mail: {
+                    required: "Proporciona un correo electrónico",
+                    minlength: "Mínimo 6 caracteres",
+                    email: "No válido"
+                }
+            }
+        });
+        
+        
+
 	/*$campo1 = $("input#username").val();
 	$campo2 = $("input#email").val();
 	$campo3 = $("input#nacimiento").val();*/
 
   $("input.textu").val('');  
  
+ 
+ 
+ 
 });
+
   </script>
 
 <h2>Usuarios ya registrados</h2>
